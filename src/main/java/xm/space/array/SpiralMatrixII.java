@@ -1,5 +1,8 @@
 package xm.space.array;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * There is plenty of fish in the sea
  *
@@ -45,6 +48,49 @@ public class SpiralMatrixII {
         return arr;
     }
 
+    /** LeetCode 54
+     * 给你一个 m 行 n 列的矩阵 matrix ，请按照 顺时针螺旋顺序 ，返回矩阵中的所有元素
+     * 输入：matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+     * 输出：[1,2,3,4,8,12,11,10,9,5,6,7]
+     * 提示：
+     * m == matrix.length
+     * n == matrix[i].length
+     * 1 <= m, n <= 10
+     * -100 <= matrix[i][j] <= 100
+     */
+    static List<Integer> spiralMatrixPrint(int[][] matrix) {
+        //1.找出左右上下边界
+        int x = matrix.length;
+        int y = matrix[0].length;
+        List<Integer> list = new ArrayList<>(256);
+        int l=0,r=y-1,t=0,b=x-1;
+        //2. 每个数组空间当作一个元素依次放入数组中。元素长度作为判断条件,要注意正方形和非正方形不同。非正方形层数少一次，数据可能会出现问题
+        int ele = 1;
+        while(ele <= x*y){
+            //3.一定要判断ele <= x*y 涉及螺旋矩阵层数问题。
+            for (int i = l; i <= r && ele <= x*y; i++) {
+                list.add(matrix[t][i]);
+                ele++;
+            }
+            t++;
+            for (int i = t; i <= b && ele <= x*y; i++) {
+                list.add(matrix[i][r]);
+                ele++;
+            }
+            r--;
+            for (int i = r; i >= l && ele <= x*y; i--) {
+                list.add(matrix[b][i]);
+                ele++;
+            }
+            b--;
+            for (int i = b; i >= t && ele <= x*y; i--) {
+                list.add(matrix[i][l]);
+                ele++;
+            }
+            l++;
+        }
+        return list;
+    }
     public static void main(String[] args) {
         int[][] ints = spiralMatrixII(20);
         for (int i = 0; i < ints.length; i++) {
@@ -59,5 +105,8 @@ public class SpiralMatrixII {
             }
             System.out.println();
         }
+        int[][] ints1 = {{1,3,5,6},{22,45,78,21},{111,333,667,463}};
+        List<Integer> integers = spiralMatrixPrint(ints1);
+        System.out.println(integers);
     }
 }
