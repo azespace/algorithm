@@ -2,6 +2,7 @@ package xm.space.linkedList;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 /**
  * There is plenty of fish in the sea
@@ -14,10 +15,15 @@ import lombok.Data;
 public class ListNode {
     /**
      * 存放的数据
+     *
      */
     int val;
     /**
      * 下一个链表
      */
     ListNode next;
+
+    public ListNode(int val) {
+        this.val = val;
+    }
 }
