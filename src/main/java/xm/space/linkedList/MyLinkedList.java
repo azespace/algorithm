@@ -24,9 +24,9 @@ public class MyLinkedList {
     ListNode listNode;
     public MyLinkedList() {
         size = 0;
+        //不算是虚拟节点算是初始化的节点
         listNode=new ListNode(0);
     }
-
     public int get(int index) {
         //1.index是索引 所以需要保证索引大于0以及不能大于等于size
         if (index < 0 || index >= size){
@@ -39,18 +39,15 @@ public class MyLinkedList {
         }
         return cur.val;
     }
-
     public void addAtHead(int val) {
         addAtIndex(0,val);
     }
-
     public void addAtTail(int val) {
         addAtIndex(size,val);
     }
-
     public void addAtIndex(int index, int val) {
         //1.在某个索引节点处插入就相当于在该索引节点和他的前驱节点中间放入一个新的节点。所以用前驱节点判断插入位置比较合适
-        //2.大于size什么都不做(size没记录虚拟机点的),小于size在头部节点插入
+        //2.大于size什么都不做(size没记录虚拟节点的),小于size在头部节点插入
         if (index > size){
             return ;
         }
@@ -69,7 +66,6 @@ public class MyLinkedList {
         addNode.next = pre.next;
         pre.next = addNode;
     }
-
     public void deleteAtIndex(int index) {
         //1.非索引不处理
         if (index<0||index>=size){
@@ -89,5 +85,4 @@ public class MyLinkedList {
         //4.前驱节点的下一个变成 下下个 完成删除。
         pre.next = pre.next.next;
     }
-
 }
