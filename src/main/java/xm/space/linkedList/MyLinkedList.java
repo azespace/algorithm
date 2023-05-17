@@ -24,7 +24,7 @@ public class MyLinkedList {
     ListNode listNode;
     public MyLinkedList() {
         size = 0;
-        //不算是虚拟节点算是初始化的节点
+        //不算是虚拟节点算是初始化的节点 获取和删除的时候计算在内
         listNode=new ListNode(0);
     }
     public int get(int index) {
