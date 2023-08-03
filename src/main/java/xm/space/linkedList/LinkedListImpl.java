@@ -1,16 +1,12 @@
 package xm.space.linkedList;
 
-import lombok.val;
-
-import java.util.List;
-
 /**
  * There is plenty of fish in the sea
  *
  * @Author XM  2023/05/12
  * Description: 设计链表
  **/
-public class MyLinkedList {
+public class LinkedListImpl {
     /** LeetCode 707
      * 在链表类中实现这些功能：
      * get(index)：获取链表中第 index 个节点的值。如果索引无效，则返回-1。
@@ -22,7 +18,7 @@ public class MyLinkedList {
     //增加节点数量字段很关键,没有这个数量很难查询指定索引的值。因为你不清楚索引是否越界。
     int size;
     ListNode listNode;
-    public MyLinkedList() {
+    public LinkedListImpl() {
         size = 0;
         //不算是虚拟节点算是初始化的节点 获取和删除的时候计算在内
         listNode=new ListNode(0);
